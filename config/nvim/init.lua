@@ -1,3 +1,4 @@
+vim.keymap.set("i", "<C-CR>", "<Esc>o", { noremap = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.o.number = true
@@ -55,6 +56,23 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 require("lazy").setup({
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {
+			indent = { char = "│" },
+			scope = { enabled = true },
+		},
+	},
+	{
+		"echasnovski/mini.indentscope",
+		version = false,
+		config = function()
+			require("mini.indentscope").setup({
+				symbol = "│",
+			})
+		end,
+	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
@@ -244,6 +262,11 @@ require("lazy").setup({
 				lua_ls = {},
 				gopls = {},
 				omnisharp = {},
+				clangd = {},
+				html = {},
+				cssls = {},
+				ts_ls = {},
+				emmet_ls = {},
 			}
 			require("mason-lspconfig").setup({
 				ensure_installed = vim.tbl_keys(servers),
@@ -342,7 +365,7 @@ require("lazy").setup({
 		},
 		opts = {
 			keymap = {
-				preset = "enter",
+				preset = "super-tab",
 			},
 			appearance = {
 				nerd_font_variant = "mono",
