@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}/Screenshots"
+mkdir -p "$DIR"
+
+ts="$(date +'%Y-%m-%d_%H-%M-%S')"
+file="$DIR/shot_${ts}.png"
+
+# pick region
+geom="$(slurp)"
+grim -g "$geom" - | tee "$file" | wl-copy --type image/png
+# optional notify
+command -v notify-send >/dev/null && notify-send "Screenshot" "Saved + copied:\n$file"
