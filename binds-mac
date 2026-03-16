@@ -11,3 +11,4 @@ h = left
 j = down
 k = up
 l = right
+# sudo systemctl enable --now keyd
