@@ -13,3 +13,5 @@ grim -g "$geom" - | tee "$file" | wl-copy --type image/png
 # optional notify
 command -v notify-send >/dev/null && notify-send "Screenshot" "Saved + copied:\n$file"
 # sudo pacman -S grim slurp wl-clipboard libnotify
+# bind = $mainMod, T, exec, ~/.local/bin/shot-area
+
