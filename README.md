@@ -1,4 +1,4 @@
-deps: 
+script deps: 
     rsync
     git
 nvim deps:
